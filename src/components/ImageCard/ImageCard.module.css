@@ -1,0 +1,13 @@
+.item {
+  display: block;
+  width: 360px;
+  flex-basis: calc((100% - 48px) / 3);
+  border: none;
+  box-sizing: border-box;
+}
+
+img {
+  max-height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
