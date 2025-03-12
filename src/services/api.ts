@@ -17,7 +17,7 @@ interface Image {
 
 interface ApiResponse {
   results: Image[];
-  totalPage: number;
+  total_pages: number;
 }
 
 interface ApiRequest {
@@ -33,10 +33,10 @@ const getImage = async ({
 }: ApiRequest): Promise<ApiResponse> => {
   const response = await axios.get("/search/photos", {
     params: {
-      query: query,
+      query,
       orientation: "landscape",
       per_page: perPage,
-      page: page,
+      page,
     },
   });
   return response.data;

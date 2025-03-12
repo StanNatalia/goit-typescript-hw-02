@@ -2,7 +2,7 @@ import css from "./ImageCard.module.css";
 
 interface Photo {
   id: number;
-  alt_description: string;
+  description: string;
   small: string;
   regular: string;
 }
@@ -14,7 +14,7 @@ interface ImageCardProps {
 const ImageGallery: React.FC<ImageCardProps> = ({ photo, openModal }) => {
   return (
     <li className={css.item} onClick={() => openModal(photo)}>
-      <img src={photo.small} alt={photo.alt_description} />
+      <img src={photo.small} alt={photo.description} />
     </li>
   );
 };

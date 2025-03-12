@@ -3,7 +3,7 @@ import css from "./ImageGallery.module.css";
 
 interface Photo {
   id: number;
-  alt_description: string;
+  description: string;
   small: string;
   regular: string;
 }

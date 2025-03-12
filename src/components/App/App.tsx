@@ -12,7 +12,7 @@ import fetchPhotos from "../../services/api";
 
 interface Photo {
   id: number;
-  alt_description: string;
+  description: string;
   small: string;
   regular: string;
 }
@@ -39,9 +39,9 @@ function App() {
         const { total_pages, results } = data;
 
         const formattedPhotos: Photo[] = results.map(
-          ({ id, alt_description, urls: { small, regular } }: any) => ({
+          ({ id, description, urls: { small, regular } }) => ({
             id,
-            alt_description,
+            description,
             small,
             regular,
           })
@@ -96,7 +96,7 @@ function App() {
           modalIsOpen={!!selectedPhoto}
           closeModal={closeModal}
           src={selectedPhoto.regular}
-          alt={selectedPhoto.alt_description}
+          alt={selectedPhoto.description}
         />
       )}
     </div>
