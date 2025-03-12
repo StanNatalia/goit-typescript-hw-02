@@ -7,7 +7,9 @@ interface LoadMoreProps {
 const LoadMoreBtn: React.FC<LoadMoreProps> = ({ handleChangePage }) => {
   return (
     <div className={css.wrapper}>
-      <button onClick={handleChangePage}>Load More</button>
+      <button className={css.button} onClick={handleChangePage}>
+        Load More
+      </button>
     </div>
   );
 };
