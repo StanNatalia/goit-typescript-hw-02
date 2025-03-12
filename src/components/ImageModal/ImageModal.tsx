@@ -1,5 +1,5 @@
-import Modal from "react-modal";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import ReactModal from "react-modal";
 
 const customStyles = {
   content: {
@@ -15,7 +15,7 @@ const customStyles = {
   overlay: { backgroundColor: "rgba(0,0,0, 0.9) " },
 };
 
-Modal.setAppElement("#root");
+ReactModal.setAppElement("#root");
 
 interface ImageModalProps {
   modalIsOpen: boolean;
@@ -31,7 +31,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
   alt,
 }) => {
   return (
-    <Modal
+    <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
@@ -61,7 +61,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           margin: "0 auto",
         }}
       />
-    </Modal>
+    </ReactModal>
   );
 };
 
