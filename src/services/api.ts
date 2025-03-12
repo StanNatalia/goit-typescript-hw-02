@@ -6,7 +6,31 @@ axios.defaults.baseURL = "https://api.unsplash.com";
 axios.defaults.headers.common["Authorization"] = `Client-ID ${API_KEY}`;
 axios.defaults.headers.common["Accept-Version"] = "v1";
 
-const getImage = async (query, page, perPage) => {
+interface Image {
+  id: string;
+  urls: {
+    small: string;
+    regular: string;
+  };
+  description: string;
+}
+
+interface ApiResponse {
+  results: Image[];
+  totalPage: number;
+}
+
+interface ApiRequest {
+  query: string;
+  page: number;
+  perPage: number;
+}
+
+const getImage = async ({
+  query,
+  page,
+  perPage,
+}: ApiRequest): Promise<ApiResponse> => {
   const response = await axios.get("/search/photos", {
     params: {
       query: query,

@@ -1,14 +1,14 @@
-import css from "../src/App.module.css";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import SearchBar from "./components/SearchBar/SearchBar";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import Loader from "./components/Loader/Loader";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import ImageModal from "./components/ImageModal/ImageModal";
+import css from "./App.module.css";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import SearchBar from "../SearchBar/SearchBar";
+import ImageGallery from "../ImageGallery/ImageGallery";
+import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ImageModal from "../ImageModal/ImageModal";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import fetchPhotos from "./services/api";
+import fetchPhotos from "../../services/api";
 
 interface Photo {
   id: number;
@@ -34,7 +34,7 @@ function App() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const data = await fetchPhotos(query, page, perPage);
+        const data = await fetchPhotos({ query, page, perPage });
 
         const { total_pages, results } = data;
 
@@ -63,7 +63,7 @@ function App() {
     console.log(newQuery);
     setQuery(newQuery);
     setPhotos([]);
-    setPage(0);
+    setPage(1);
     setIsVisible(false);
     setIsError(false);
   };
