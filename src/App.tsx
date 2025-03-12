@@ -10,16 +10,23 @@ import { useState } from "react";
 import { useEffect } from "react";
 import fetchPhotos from "./services/api";
 
+interface Photo {
+  id: number;
+  alt_description: string;
+  small: string;
+  regular: string;
+}
+
 function App() {
-  const [photos, setPhotos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [perPage] = useState(12);
-  const [isVisible, setIsVisible] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [perPage] = useState<number>(12);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   useEffect(() => {
     if (!query) return;
@@ -31,8 +38,8 @@ function App() {
 
         const { total_pages, results } = data;
 
-        const formattedPhotos = results.map(
-          ({ id, alt_description, urls: { small, regular } }) => ({
+        const formattedPhotos: Photo[] = results.map(
+          ({ id, alt_description, urls: { small, regular } }: any) => ({
             id,
             alt_description,
             small,
@@ -52,7 +59,7 @@ function App() {
     getPhoto();
   }, [query, page, perPage, setTotalPages]);
 
-  const handleSetQuery = (newQuery) => {
+  const handleSetQuery = (newQuery: string) => {
     console.log(newQuery);
     setQuery(newQuery);
     setPhotos([]);
@@ -62,7 +69,7 @@ function App() {
   };
   const handleChangePage = () => setPage((prev) => prev + 1);
 
-  const openModal = (photo) => {
+  const openModal = (photo: Photo) => {
     setSelectedPhoto(photo);
   };
 
