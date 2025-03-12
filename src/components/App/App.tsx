@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import fetchPhotos from "../../services/api";
 
 interface Photo {
-  id: number;
+  id: string;
   description: string;
   small: string;
   regular: string;

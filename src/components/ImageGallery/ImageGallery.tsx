@@ -2,7 +2,7 @@ import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
 interface Photo {
-  id: number;
+  id: string;
   description: string;
   small: string;
   regular: string;

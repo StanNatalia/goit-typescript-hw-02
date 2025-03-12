@@ -1,7 +1,7 @@
 import css from "./ImageCard.module.css";
 
 interface Photo {
-  id: number;
+  id: string;
   description: string;
   small: string;
   regular: string;
